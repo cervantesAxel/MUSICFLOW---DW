@@ -8,10 +8,11 @@ body {
 }
 
 body {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
     margin: 0;
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    color: #0f1724;
-    display: flex;
 }
 
 #sidebar {
@@ -30,24 +31,42 @@ body {
     gap: 0.8rem;
     align-items: center;
     padding: 0.9rem;
-    color: #0f1724;
+    color: #ffffff;
     text-decoration: none;
-    background: transparent;
-    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: background .12s ease, transform .12s ease, border-color .12s ease;
+    margin-bottom: 8px;
 }
 
 .side-card .text-muted {
     font-size: .85rem;
+    color: #94a3b8 !important;
 }
 
 .side-card:hover {
-    background: rgba(109, 211, 201, 0.12);
+    background: rgba(139, 92, 246, 0.2);
     transform: translateY(-3px);
-    border-color: rgba(109, 211, 201, 0.16);
+    border-color: rgba(139, 92, 246, 0.4);
     text-decoration: none;
 }
 
+.nav-link {
+    color: #ffffff !important;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.nav-link:hover {
+    background-color: rgba(139, 92, 246, 0.2);
+    color: #ffffff !important;
+}
+
 .text-muted {
-    color: var(--muted) !important;
+    color: #94a3b8 !important;
+}
+
+/* Icon colors for sidebar */
+.side-card i {
+    color: #00D4FF;
 }
