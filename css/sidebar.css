@@ -16,6 +16,7 @@ body {
 }
 
 #sidebar {
+    width: 260px;
     min-height: 100vh;
     padding: 1.1rem;
     box-shadow: 2px 0 8px rgba(15, 23, 36, 0.06);
@@ -24,10 +25,12 @@ body {
     left: 0;
     top: 0;
     overflow-y: auto;
+    z-index: 1000;
 }
 
 .side-card {
     display: flex;
+    height: 100px;
     gap: 0.8rem;
     align-items: center;
     padding: 0.9rem;
@@ -66,7 +69,29 @@ body {
     color: #94a3b8 !important;
 }
 
-/* Icon colors for sidebar */
 .side-card i {
     color: #00D4FF;
+}
+
+/* Responsive sidebar */
+@media (max-width: 992px) {
+    #sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    #sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        width: 100%;
+        max-width: 280px;
+    }
 }
