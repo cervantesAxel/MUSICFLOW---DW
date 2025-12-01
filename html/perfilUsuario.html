@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicFlow - Perfil de Usuario</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/usuario.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <div id="sidebar-placeholder"></div>
+    
+    <main class="main-content">
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="page-title">Mi Perfil</h2>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-4">
+                    <div class="profile-card text-center">
+                        <div class="profile-avatar">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+                        <h3 class="profile-name" id="userName">Usuario</h3>
+                        <p class="profile-email" id="userEmail">usuario@musicflow.com</p>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">127</span>
+                                <span class="stat-label">Canciones</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Playlists</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Meses</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="info-card">
+                        <h4 class="card-title">Información Personal</h4>
+                        <form id="profileForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="Tu nombre">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Apellido</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Tu apellido">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" placeholder="tu@email.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="+34 600 000 000">
+                            </div>
+                            <div class="mb-3">
+                                <label for="bio" class="form-label">Biografía</label>
+                                <textarea class="form-control" id="bio" rows="3" placeholder="Cuéntanos sobre ti..."></textarea>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-save me-2"></i>Guardar Cambios
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary">
+                                    <i class="bi bi-x-circle me-2"></i>Cancelar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="../js/partials.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/usuario.js"></script>
+</body>
+</html>
