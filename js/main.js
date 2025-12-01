@@ -1,8 +1,8 @@
-// JavaScript básico para MusicFlow
+// JavaScript basico para MusicFlow
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('MusicFlow - Página cargada correctamente');
+    console.log('MusicFlow - Pagina cargada correctamente');
     
-    // Animación suave al hacer scroll
+    // animacion suave al hacer scroll
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
     
-    // Observar elementos para animaciones
+    // observar elementos para animaciones
     const animateElements = document.querySelectorAll('.feature-card');
     animateElements.forEach(el => {
         el.style.opacity = '0';
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Efecto hover en botones
+    // efecto hover en botones
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(button => {
         button.addEventListener('mouseenter', function() {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Animación del visualizador de música
+    // animacion del visualizador de musica
     const bars = document.querySelectorAll('.bar');
     bars.forEach((bar, index) => {
         setInterval(() => {

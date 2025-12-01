@@ -1,9 +1,11 @@
 .main-content {
   margin-left: 250px;
-  padding: 20px;
+  padding: 80px 20px 20px;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   min-height: 100vh;
   color: #ffffff;
+  width: calc(100% - 250px);
+  overflow-x: hidden;
 }
 
 .page-title {
@@ -11,6 +13,9 @@
   font-weight: 600;
   margin-bottom: 30px;
   font-size: 2rem;
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: visible;
 }
 
 /* card perfil */
@@ -166,11 +171,97 @@
   transform: translateY(-2px);
 }
 
+/* Grid de información */
+.info-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.info-item {
+  padding: 15px;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 10px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.info-label {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.info-value {
+  color: #ffffff;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 400;
+}
+
+.subscription-premium {
+  color: #00d4ff !important;
+  font-weight: 600;
+}
+
+.bio-text {
+  line-height: 1.6;
+}
+
+/* Géneros musicales */
+.genres-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.genre-tag {
+  background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.genre-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+/* Modal */
+.modal-content {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 15px;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.modal-title {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.btn-close {
+  filter: invert(1);
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(139, 92, 246, 0.2);
+}
+
 /* Responsive */
 @media (max-width: 992px) {
   .main-content {
     margin-left: 0;
-    padding: 15px;
+    padding: 80px 15px 15px;
+    width: 100%;
   }
 
   .profile-card {
