@@ -55,7 +55,7 @@ class RegistrationManager {
             
             // redirigir al perfil despues de 2 segundos
             setTimeout(() => {
-                window.location.href = 'perfilUsuario.html';
+                window.location.href = 'inicio.html';
             }, 2000);
             
         } catch (error) {
