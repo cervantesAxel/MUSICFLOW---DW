@@ -38,7 +38,7 @@ class LoginManager {
             
             if (currentUser) {
                 // si ya hay una sesion activa, redirigir al perfil
-                window.location.href = 'perfilUsuario.html';
+                window.location.href = 'inicio.html';
             }
         }
     }
@@ -68,7 +68,7 @@ class LoginManager {
                 
                 // redirigir al perfil despues de 1.5 segundos
                 setTimeout(() => {
-                    window.location.href = 'perfilUsuario.html';
+                    window.location.href = 'inicio.html';
                 }, 1500);
                 
             } else {
