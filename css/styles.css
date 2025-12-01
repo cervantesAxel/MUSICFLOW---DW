@@ -12,7 +12,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Navbar */
 .navbar {
     background-color: rgba(15, 23, 42, 0.95) !important;
     backdrop-filter: blur(10px);
@@ -90,7 +89,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Hero Section */
 .hero-section {
     min-height: 100vh;
     background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #8B5CF6 100%);
@@ -165,7 +163,6 @@ body {
     transform: translateY(-3px);
 }
 
-/* Music Visualizer */
 .music-visualizer {
     display: flex;
     align-items: flex-end;
@@ -189,7 +186,6 @@ body {
 .bar-4 { height: 60px; animation-delay: 0.6s; }
 .bar-5 { height: 100px; animation-delay: 0.8s; }
 
-/* Features Section */
 .features-section {
     background-color: #1E293B;
     padding: 80px 0;
@@ -249,7 +245,6 @@ body {
     color: #00D4FF;
 }
 
-/* Animaciones */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -270,7 +265,6 @@ body {
     }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .hero-section {
         padding: 100px 0 50px;

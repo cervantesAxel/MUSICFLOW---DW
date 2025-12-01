@@ -2,7 +2,22 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('MusicFlow - Pagina cargada correctamente');
     
-    // animacion suave al hacer scroll
+    // Obtener token de Spotify
+    async function getSpotifyToken() {
+        try {
+            const response = await fetch('http://127.0.0.1:5050/token');
+            const data = await response.json();
+            console.log('Token de Spotify:', data.access_token);
+            return data.access_token;
+        } catch (error) {
+            console.error('Error obteniendo token:', error);
+        }
+    }
+    
+    // Llamar al token al cargar la página
+    getSpotifyToken();
+    
+    // Animación suave al hacer scroll
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
