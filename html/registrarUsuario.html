@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicFlow - Registrarse</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/registrarUsuario.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header text-center">
+                <div class="logo mb-3">
+                    <img src="../assets/logo.png" alt="MusicFlow" class="logo-img">
+                </div>
+                <h2 class="auth-title">Crear Cuenta</h2>
+                <p class="auth-subtitle">Únete a MusicFlow y descubre nueva música</p>
+            </div>
+            
+            <form id="registerForm" class="auth-form">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName" class="form-label">Nombre</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                            <input type="text" class="form-control" id="firstName" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName" class="form-label">Apellido</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                            <input type="text" class="form-control" id="lastName" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Teléfono (opcional)</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                        <input type="tel" class="form-control" id="phone">
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" class="form-control" id="password" required>
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                        <input type="password" class="form-control" id="confirmPassword" required>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Géneros Musicales Favoritos</label>
+                    <div class="genres-selection">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="genre-pop" value="Pop">
+                            <label class="form-check-label" for="genre-pop">Pop</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="genre-rock" value="Rock">
+                            <label class="form-check-label" for="genre-rock">Rock</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="genre-electronica" value="Electrónica">
+                            <label class="form-check-label" for="genre-electronica">Electrónica</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="genre-jazz" value="Jazz">
+                            <label class="form-check-label" for="genre-jazz">Jazz</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="genre-hiphop" value="Hip Hop">
+                            <label class="form-check-label" for="genre-hiphop">Hip Hop</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="genre-indie" value="Indie">
+                            <label class="form-check-label" for="genre-indie">Indie</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="terms" required>
+                        <label class="form-check-label" for="terms">
+                            Acepto los <a href="#" class="auth-link">términos y condiciones</a> y la <a href="#" class="auth-link">política de privacidad</a>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="bi bi-person-plus me-2"></i>Crear Cuenta
+                    </button>
+                </div>
+                
+                <div class="auth-divider">
+                    <span>o</span>
+                </div>
+                
+                <div class="text-center">
+                    <p class="mb-0">¿Ya tienes una cuenta? <a href="inicioSesion.html" class="auth-link">Inicia Sesión</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/registrarUsuario.js"></script>
+</body>
+</html>

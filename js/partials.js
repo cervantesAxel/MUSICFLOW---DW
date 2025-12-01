@@ -1,3 +1,4 @@
+// funcion para cargar partials de forma asincrona
 async function loadPartial(url) {
     try {
         const res = await fetch(url, { cache: "no-store" });
@@ -9,6 +10,7 @@ async function loadPartial(url) {
     }
 }
 
+// funcion principal para inicializar los partials
 async function initPartials() {
     const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
 

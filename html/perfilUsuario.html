@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicFlow - Perfil de Usuario</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/usuario.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <div id="sidebar-placeholder"></div>
+    
+    <main class="main-content">
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="page-title">Mi Perfil</h2>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-4">
+                    <div class="profile-card text-center">
+                        <div class="profile-avatar">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+                        <h3 class="profile-name" id="userName">Usuario</h3>
+                        <p class="profile-email" id="userEmail">usuario@musicflow.com</p>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">0</span>
+                                <span class="stat-label">Canciones</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">0</span>
+                                <span class="stat-label">Playlists</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">0</span>
+                                <span class="stat-label">Meses</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="info-card">
+                        <h4 class="card-title">Información Personal</h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label class="info-label">Nombre Completo</label>
+                                <p class="info-value" id="fullName">Usuario</p>
+                            </div>
+                            <div class="info-item">
+                                <label class="info-label">Correo Electrónico</label>
+                                <p class="info-value" id="userEmailDisplay">usuario@musicflow.com</p>
+                            </div>
+                            <div class="info-item">
+                                <label class="info-label">Teléfono</label>
+                                <p class="info-value" id="userPhone">No especificado</p>
+                            </div>
+                            <div class="info-item">
+                                <label class="info-label">Miembro desde</label>
+                                <p class="info-value" id="memberSince">Fecha no disponible</p>
+                            </div>
+                            <div class="info-item">
+                                <label class="info-label">Tipo de Suscripción</label>
+                                <p class="info-value" id="subscriptionType">Free</p>
+                            </div>
+                            <div class="info-item">
+                                <label class="info-label">Biografía</label>
+                                <p class="info-value bio-text" id="userBio">Aún no has agregado una biografía</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                                <i class="bi bi-pencil-square me-2"></i>Editar Perfil
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card mt-4">
+                        <h4 class="card-title">Preferencias Musicales</h4>
+                        <div class="genres-grid">
+                            <span class="text-muted">No has seleccionado géneros aún</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Modal Editar Perfil -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Perfil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editProfileForm">
+                        <div class="mb-3">
+                            <label for="editFirstName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="editFirstName" placeholder="Tu nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editLastName" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="editLastName" placeholder="Tu apellido">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEmail" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="editEmail" placeholder="tu@email.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPhone" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="editPhone" placeholder="+34 600 000 000">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editBio" class="form-label">Biografía</label>
+                            <textarea class="form-control" id="editBio" rows="3" placeholder="Cuéntanos sobre ti..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveProfileBtn">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="../js/partials.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/sidebarManager.js"></script>
+    <script src="../js/usuarioPerfil.js"></script>
+</body>
+</html>
