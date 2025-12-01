@@ -24,4 +24,6 @@ app.get("/token", async (req, res) => {
   res.json(data);
 });
 
-app.listen(5050, () => console.log("Servidor listo en http://127.0.0.1:5050"));
+app.listen(5050, () => {
+  console.log("Servidor listo en http://127.0.0.1:5050");
+});
