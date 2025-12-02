@@ -284,7 +284,7 @@ class MusicFlowInicio {
         }
     }
     
-    createNewPlaylist() {
+createNewPlaylist() {
         const input = document.getElementById('newPlaylistName');
         const playlistName = input.value.trim();
         
@@ -300,7 +300,7 @@ class MusicFlowInicio {
             name: playlistName,
             tracks: [],
             createdAt: new Date().toISOString(),
-            coverImage: 'https://via.placeholder.com/300x300/667eea/ffffff?text=' + encodeURIComponent(playlistName.charAt(0).toUpperCase())
+            coverImage: null // Will be set when first track is added
         };
         
         data.playlists.push(newPlaylist);
@@ -317,7 +317,7 @@ class MusicFlowInicio {
         }
     }
     
-    addTrackToPlaylist(playlistId) {
+addTrackToPlaylist(playlistId) {
         const data = this.getStorageData();
         const playlist = data.playlists.find(p => p.id === playlistId);
         
@@ -332,6 +332,11 @@ class MusicFlowInicio {
         
         // Agregar la canción a la playlist
         playlist.tracks.push(trackId);
+        
+        // Update playlist cover image if it's the first track
+        if (playlist.tracks.length === 1) {
+            playlist.coverImage = this.currentTrack.album.images[0]?.url;
+        }
         
         // Guardar la información de la canción si no existe
         if (!data.tracks[trackId]) {

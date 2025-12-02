@@ -37,6 +37,7 @@ class MusicFlowPlaylists {
         this.setupModals();
         this.setupColorPicker();
         this.loadData();
+        this.updateExistingPlaylistCovers();
         this.renderPlaylists();
         this.updateStats();
     }
@@ -123,6 +124,29 @@ class MusicFlowPlaylists {
         this.playlists = data.playlists || [];
         this.tracks = data.tracks || {};
         this.filteredPlaylists = [...this.playlists];
+    }
+
+    updateExistingPlaylistCovers() {
+        const data = this.getStorageData();
+        let updated = false;
+        
+        data.playlists.forEach(playlist => {
+            // Only update if playlist doesn't have a custom coverImage and has tracks
+            if (!playlist.coverImage && playlist.tracks && playlist.tracks.length > 0) {
+                const firstTrackId = playlist.tracks[0];
+                const firstTrack = data.tracks[firstTrackId];
+                
+                if (firstTrack && firstTrack.image) {
+                    playlist.coverImage = firstTrack.image;
+                    updated = true;
+                }
+            }
+        });
+        
+        if (updated) {
+            this.saveToLocalStorage(data);
+            this.loadData(); // Reload the updated data
+        }
     }
 
     getStorageData() {
@@ -220,6 +244,22 @@ class MusicFlowPlaylists {
     }
 
     generateCoverImage(playlist) {
+        // Check if playlist has tracks and get first track's image
+        if (playlist.tracks && playlist.tracks.length > 0) {
+            const firstTrackId = playlist.tracks[0];
+            const firstTrack = this.tracks[firstTrackId];
+
+            if (firstTrack && firstTrack.image) {
+                // Try to get a larger image if it's a Spotify URL
+                if (firstTrack.image.includes('spotify')) {
+                    // Replace smaller image sizes with larger ones
+                    return firstTrack.image.replace(/(\d+x)\d+/, '300x300');
+                }
+                return firstTrack.image;
+            }
+        }
+
+        // Fallback to current placeholder logic
         const firstLetter = playlist.name.charAt(0).toUpperCase();
         const color = playlist.color || '#667eea';
         return `https://via.placeholder.com/300x300/${color.replace('#', '')}/ffffff?text=${firstLetter}`;
@@ -493,6 +533,15 @@ class MusicFlowPlaylists {
         
         if (playlist) {
             playlist.tracks = playlist.tracks.filter(id => id !== trackId);
+            
+            // Update cover image if the first track was removed
+            if (playlist.tracks.length > 0) {
+                this.updatePlaylistCover(playlist.id);
+            } else {
+                // Remove custom cover if playlist is now empty
+                playlist.coverImage = null;
+            }
+            
             this.saveToLocalStorage(data);
             
             // Update current playlist
@@ -505,7 +554,7 @@ class MusicFlowPlaylists {
             // Update stats
             this.updateStats();
             
-            // Re-render playlists to update track count
+            // Re-render playlists to update track count and cover
             this.renderPlaylists();
             
             this.showToast('Canción eliminada de la playlist');
@@ -642,6 +691,26 @@ class MusicFlowPlaylists {
     hideEmptyStates() {
         this.emptyState.classList.add('d-none');
         this.noResultsState.classList.add('d-none');
+    }
+
+    updatePlaylistCover(playlistId) {
+        const playlist = this.playlists.find(p => p.id === playlistId);
+        if (!playlist || !playlist.tracks || playlist.tracks.length === 0) return;
+        
+        const firstTrackId = playlist.tracks[0];
+        const firstTrack = this.tracks[firstTrackId];
+        
+        if (firstTrack && firstTrack.image) {
+            playlist.coverImage = firstTrack.image;
+            
+            // Save to localStorage
+            const data = this.getStorageData();
+            const playlistIndex = data.playlists.findIndex(p => p.id === playlistId);
+            if (playlistIndex !== -1) {
+                data.playlists[playlistIndex].coverImage = firstTrack.image;
+                this.saveToLocalStorage(data);
+            }
+        }
     }
 
     showToast(message, type = 'success') {
