@@ -14,8 +14,8 @@ class UserProfileManager {
 
     // obtener el usuario actual del localStorage
     getCurrentUser() {
-        const users = JSON.parse(localStorage.getItem('musicflow_users') || '[]');
-        const currentUserId = localStorage.getItem('musicflow_current_user_id');
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        const currentUserId = localStorage.getItem('user_id');
         
         if (currentUserId) {
             return users.find(user => user.id === currentUserId) || null;
@@ -55,7 +55,7 @@ class UserProfileManager {
 
     // guardar perfil del usuario en localStorage
     saveUserProfile(userData) {
-        const users = JSON.parse(localStorage.getItem('musicflow_users') || '[]');
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
         const userIndex = users.findIndex(user => user.id === this.currentUser.id);
         
         if (userIndex !== -1) {
@@ -66,11 +66,11 @@ class UserProfileManager {
             users.push({ ...this.currentUser, ...userData });
         }
         
-        localStorage.setItem('musicflow_users', JSON.stringify(users));
+        localStorage.setItem('users', JSON.stringify(users));
         this.currentUser = { ...this.currentUser, ...userData };
         
         // actualizar usuario actual si es necesario
-        localStorage.setItem('musicflow_current_user_id', this.currentUser.id);
+        localStorage.setItem('user_id', this.currentUser.id);
         
         return true;
     }
@@ -263,7 +263,7 @@ class UserProfileManager {
 
     // metodo para registrar nuevos usuarios (sera usado por el sistema de registro)
     static registerUser(userData) {
-        const users = JSON.parse(localStorage.getItem('musicflow_users') || '[]');
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
         const newUser = {
             id: 'user_' + Date.now(),
             ...userData,
@@ -276,18 +276,18 @@ class UserProfileManager {
         };
         
         users.push(newUser);
-        localStorage.setItem('musicflow_users', JSON.stringify(users));
+        localStorage.setItem('users', JSON.stringify(users));
         
         return newUser;
     }
 
     // metodo para iniciar sesion
     static loginUser(email, password) {
-        const users = JSON.parse(localStorage.getItem('musicflow_users') || '[]');
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
         const user = users.find(u => u.email === email);
         
         if (user) {
-            localStorage.setItem('musicflow_current_user_id', user.id);
+            localStorage.setItem('user_id', user.id);
             return user;
         }
         

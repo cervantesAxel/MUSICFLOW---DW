@@ -31,9 +31,9 @@ class LoginManager {
     }
 
     checkExistingSession() {
-        const currentUserId = localStorage.getItem('musicflow_current_user_id');
+        const currentUserId = localStorage.getItem('user_id');
         if (currentUserId) {
-            const users = JSON.parse(localStorage.getItem('musicflow_users') || '[]');
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
             const currentUser = users.find(user => user.id === currentUserId);
             
             if (currentUser) {
@@ -105,7 +105,7 @@ class LoginManager {
     }
 
     authenticateUser(email, password) {
-        const users = JSON.parse(localStorage.getItem('musicflow_users') || '[]');
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
         
         // buscar usuario por email
         const user = users.find(u => u.email === email);
@@ -120,21 +120,21 @@ class LoginManager {
 
     setSession(user) {
         // establecer usuario actual
-        localStorage.setItem('musicflow_current_user_id', user.id);
+        localStorage.setItem('user_id', user.id);
         
         // si se selecciono "recordarme", guardar sesion persistente
         if (document.getElementById('rememberMe')?.checked) {
-            localStorage.setItem('musicflow_remember_me', 'true');
+            localStorage.setItem('remember_me', 'true');
         } else {
-            localStorage.removeItem('musicflow_remember_me');
+            localStorage.removeItem('remember_me');
         }
         
         // actualizar ultimo inicio de sesion
-        const users = JSON.parse(localStorage.getItem('musicflow_users') || '[]');
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
         const userIndex = users.findIndex(u => u.id === user.id);
         if (userIndex !== -1) {
             users[userIndex].lastLogin = new Date().toISOString();
-            localStorage.setItem('musicflow_users', JSON.stringify(users));
+            localStorage.setItem('users', JSON.stringify(users));
         }
     }
 
@@ -165,8 +165,8 @@ class LoginManager {
 
     // metodo estatico para cerrar sesion
     static logout() {
-        localStorage.removeItem('musicflow_current_user_id');
-        localStorage.removeItem('musicflow_remember_me');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('remember_me');
         window.location.href = 'inicioSesion.html';
     }
 }

@@ -1,4 +1,4 @@
-// JavaScript para la página de playlists - MusicFlow
+//JavaScript para la página de playlists
 class MusicFlowPlaylists {
     constructor() {
         this.playlistsContainer = document.getElementById('playlistsContainer');
@@ -9,12 +9,12 @@ class MusicFlowPlaylists {
         this.createPlaylistBtn = document.getElementById('createPlaylistBtn');
         this.emptyCreateBtn = document.getElementById('emptyCreateBtn');
         
-        // Modals
+        //Modales
         this.playlistModal = null;
         this.viewPlaylistModal = null;
         this.deleteConfirmModal = null;
         
-        // Form elements
+        //Elementos
         this.playlistForm = document.getElementById('playlistForm');
         this.playlistNameInput = document.getElementById('playlistName');
         this.playlistDescriptionInput = document.getElementById('playlistDescription');
@@ -22,7 +22,7 @@ class MusicFlowPlaylists {
         this.savePlaylistBtn = document.getElementById('savePlaylistBtn');
         this.deletePlaylistBtn = document.getElementById('deletePlaylistBtn');
         
-        // Current state
+        //Estado
         this.currentPlaylist = null;
         this.playlists = [];
         this.tracks = {};
@@ -43,23 +43,23 @@ class MusicFlowPlaylists {
     }
 
     setupEventListeners() {
-        // Create playlist buttons
+        //Crear playlist
         this.createPlaylistBtn.addEventListener('click', () => this.openCreateModal());
         this.emptyCreateBtn.addEventListener('click', () => this.openCreateModal());
         
-        // Search functionality
+        //Buscar funcionalidad
         this.searchInput.addEventListener('input', (e) => this.handleSearch(e.target.value));
         
-        // Sort buttons
+        //Ordenar 
         document.getElementById('sortByNameBtn').addEventListener('click', () => this.sortPlaylists('name'));
         document.getElementById('sortByDateBtn').addEventListener('click', () => this.sortPlaylists('date'));
         document.getElementById('sortByTracksBtn').addEventListener('click', () => this.sortPlaylists('tracks'));
         
-        // Form submission
+        //Envio de formulario
         this.savePlaylistBtn.addEventListener('click', () => this.savePlaylist());
         this.deletePlaylistBtn.addEventListener('click', () => this.confirmDelete());
         
-        // Enter key in form
+        //Envio por tecla
         this.playlistNameInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
@@ -67,15 +67,15 @@ class MusicFlowPlaylists {
             }
         });
         
-        // Modal view playlist actions
+        //Vista del modal
         document.getElementById('playAllBtn')?.addEventListener('click', () => this.playAll());
         document.getElementById('shuffleBtn')?.addEventListener('click', () => this.shufflePlaylist());
         document.getElementById('editFromViewBtn')?.addEventListener('click', () => this.editFromView());
         
-        // Confirm delete
+        //Confirmar borrado
         document.getElementById('confirmDeleteBtn')?.addEventListener('click', () => this.deletePlaylist());
         
-        // Toggle sidebar en móvil
+        // Toggle en movil
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.getElementById('sidebar');
         
@@ -113,7 +113,7 @@ class MusicFlowPlaylists {
             });
         });
         
-        // Select first color by default
+        // Seleccionar primer color default
         if (colorOptions.length > 0) {
             colorOptions[0].classList.add('selected');
         }
@@ -131,7 +131,7 @@ class MusicFlowPlaylists {
         let updated = false;
         
         data.playlists.forEach(playlist => {
-            // Only update if playlist doesn't have a custom coverImage and has tracks
+            // Update el cover de la playlist
             if (!playlist.coverImage && playlist.tracks && playlist.tracks.length > 0) {
                 const firstTrackId = playlist.tracks[0];
                 const firstTrack = data.tracks[firstTrackId];
@@ -145,7 +145,7 @@ class MusicFlowPlaylists {
         
         if (updated) {
             this.saveToLocalStorage(data);
-            this.loadData(); // Reload the updated data
+            this.loadData();
         }
     }
 
@@ -244,22 +244,19 @@ class MusicFlowPlaylists {
     }
 
     generateCoverImage(playlist) {
-        // Check if playlist has tracks and get first track's image
+        // Registrar primer foto de cancion para playlist
         if (playlist.tracks && playlist.tracks.length > 0) {
             const firstTrackId = playlist.tracks[0];
             const firstTrack = this.tracks[firstTrackId];
 
             if (firstTrack && firstTrack.image) {
-                // Try to get a larger image if it's a Spotify URL
                 if (firstTrack.image.includes('spotify')) {
-                    // Replace smaller image sizes with larger ones
                     return firstTrack.image.replace(/(\d+x)\d+/, '300x300');
                 }
                 return firstTrack.image;
             }
         }
 
-        // Fallback to current placeholder logic
         const firstLetter = playlist.name.charAt(0).toUpperCase();
         const color = playlist.color || '#667eea';
         return `https://via.placeholder.com/300x300/${color.replace('#', '')}/ffffff?text=${firstLetter}`;
@@ -269,35 +266,30 @@ class MusicFlowPlaylists {
         document.querySelectorAll('.playlist-card').forEach(card => {
             const playlistId = card.dataset.playlistId;
             
-            // Play button
             const playBtn = card.querySelector('.playlist-play-btn');
             playBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 this.playPlaylist(playlistId);
             });
             
-            // View button
             const viewBtn = card.querySelector('.view-playlist-btn');
             viewBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 this.viewPlaylist(playlistId);
             });
             
-            // Edit button
             const editBtn = card.querySelector('.edit-playlist-btn');
             editBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 this.editPlaylist(playlistId);
             });
             
-            // Delete button
             const deleteBtn = card.querySelector('.delete-playlist-btn');
             deleteBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 this.deletePlaylistWithConfirm(playlistId);
             });
             
-            // Card click
             card.addEventListener('click', () => {
                 this.viewPlaylist(playlistId);
             });
@@ -328,7 +320,6 @@ class MusicFlowPlaylists {
         this.playlistDescriptionInput.value = playlist.description || '';
         this.playlistPublicInput.checked = playlist.isPublic || false;
         
-        // Set color
         this.selectedColor = playlist.color || '#667eea';
         document.querySelectorAll('.color-option').forEach(option => {
             option.classList.remove('selected');
@@ -359,7 +350,6 @@ class MusicFlowPlaylists {
         const data = this.getStorageData();
         
         if (this.currentPlaylist) {
-            // Edit existing playlist
             const playlistIndex = data.playlists.findIndex(p => p.id === this.currentPlaylist.id);
             if (playlistIndex !== -1) {
                 data.playlists[playlistIndex] = {
@@ -373,7 +363,6 @@ class MusicFlowPlaylists {
             }
             this.showToast('Playlist actualizada exitosamente');
         } else {
-            // Create new playlist
             const newPlaylist = {
                 id: 'playlist_' + Date.now(),
                 name: name,

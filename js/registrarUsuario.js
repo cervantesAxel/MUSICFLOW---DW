@@ -114,13 +114,13 @@ class RegistrationManager {
     }
 
     userExists(email) {
-        const users = JSON.parse(localStorage.getItem('musicflow_users') || '[]');
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
         return users.some(user => user.email === email);
     }
 
     registerUser(userData) {
         // obtener usuarios existentes
-        const users = JSON.parse(localStorage.getItem('musicflow_users') || '[]');
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
         
         // crear nuevo usuario
         const newUser = {
@@ -145,10 +145,10 @@ class RegistrationManager {
         users.push(newUser);
         
         // guardar en localStorage
-        localStorage.setItem('musicflow_users', JSON.stringify(users));
+        localStorage.setItem('users', JSON.stringify(users));
         
         // establecer como usuario actual
-        localStorage.setItem('musicflow_current_user_id', newUser.id);
+        localStorage.setItem('user_id', newUser.id);
         
         return newUser;
     }
