@@ -1,4 +1,3 @@
-// JavaScript para la página de playlists - MusicFlow
 class MusicFlowPlaylists {
     constructor() {
         this.playlistsContainer = document.getElementById('playlistsContainer');
@@ -729,7 +728,6 @@ class MusicFlowPlaylists {
     }
 }
 
-// Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
     new MusicFlowPlaylists();
 });

@@ -1,4 +1,3 @@
-// JavaScript para la página de inicio - MusicFlow
 class MusicFlowInicio {
     constructor() {
         this.accessToken = null;
@@ -25,7 +24,6 @@ class MusicFlowInicio {
             this.loadRecommendations();
         });
         
-        // Toggle sidebar en móvil
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.getElementById('sidebar');
         
@@ -35,7 +33,6 @@ class MusicFlowInicio {
             });
         }
         
-        // Cerrar sidebar al hacer clic fuera
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 992 && 
                 sidebar && 
@@ -46,7 +43,6 @@ class MusicFlowInicio {
             }
         });
         
-        // Eventos del modal de playlists
         this.setupPlaylistModalEvents();
     }
 
@@ -123,7 +119,6 @@ class MusicFlowInicio {
             this.tracksContainer.appendChild(trackCard);
         });
         
-        // Agregar event listeners a los botones de las cards
         this.setupTrackCardListeners();
     }
 
@@ -131,8 +126,7 @@ class MusicFlowInicio {
         const col = document.createElement('div');
         col.className = 'col-md-6 col-lg-4 col-xl-3';
         
-        // Obtener información del álbum y artista
-        const albumImage = track.album.images.length > 0 ? 
+        const albumImage = track.album.images.length > 0 ?
             track.album.images[0].url : 
             'https://via.placeholder.com/300x300?text=Sin+Imagen';
         
@@ -141,7 +135,6 @@ class MusicFlowInicio {
             track.name.substring(0, 30) + '...' : 
             track.name;
         
-        // Duración formateada
         const duration = this.formatDuration(track.duration_ms);
         
         col.innerHTML = `
@@ -203,8 +196,7 @@ class MusicFlowInicio {
         this.errorMessage.classList.add('d-none');
     }
     
-    // Funciones para manejo de playlists
-    setupPlaylistModalEvents() {
+        setupPlaylistModalEvents() {
         // Inicializar modal de Bootstrap
         this.playlistModal = new bootstrap.Modal(document.getElementById('playlistModal'));
         
@@ -274,8 +266,7 @@ class MusicFlowInicio {
                 </div>
             `).join('');
             
-            // Agregar event listeners a las playlists
-            document.querySelectorAll('.playlist-item').forEach(item => {
+        document.querySelectorAll('.playlist-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const playlistId = item.dataset.playlistId;
                     this.addTrackToPlaylist(playlistId);
@@ -300,18 +291,16 @@ createNewPlaylist() {
             name: playlistName,
             tracks: [],
             createdAt: new Date().toISOString(),
-            coverImage: null // Will be set when first track is added
+            coverImage: null
         };
         
         data.playlists.push(newPlaylist);
         this.saveToLocalStorage(data);
         
-        // Agregar la canción actual a la nueva playlist
         if (this.currentTrack) {
             this.addTrackToPlaylist(newPlaylist.id);
         } else {
-            // Solo mostrar mensaje de creación
-            this.showToast(`Playlist "${playlistName}" creada exitosamente`);
+        this.showToast(`Playlist "${playlistName}" creada exitosamente`);
             this.playlistModal.hide();
             input.value = '';
         }
@@ -323,22 +312,18 @@ addTrackToPlaylist(playlistId) {
         
         if (!playlist) return;
         
-        // Verificar si la canción ya está en la playlist
         const trackId = this.currentTrack.id;
         if (playlist.tracks.includes(trackId)) {
             this.showToast('Esta canción ya está en la playlist', 'warning');
             return;
         }
         
-        // Agregar la canción a la playlist
         playlist.tracks.push(trackId);
         
-        // Update playlist cover image if it's the first track
         if (playlist.tracks.length === 1) {
             playlist.coverImage = this.currentTrack.album.images[0]?.url;
         }
         
-        // Guardar la información de la canción si no existe
         if (!data.tracks[trackId]) {
             data.tracks[trackId] = {
                 id: this.currentTrack.id,
@@ -355,7 +340,6 @@ addTrackToPlaylist(playlistId) {
         this.showToast(`"${this.currentTrack.name}" agregada a "${playlist.name}"`);
         this.playlistModal.hide();
         
-        // Limpiar input de nueva playlist
         document.getElementById('newPlaylistName').value = '';
     }
     
@@ -388,21 +372,17 @@ addTrackToPlaylist(playlistId) {
         const toastMessage = document.getElementById('toastMessage');
         const toastIcon = toastEl.querySelector('.toast-header i');
         
-        // Configurar mensaje e icono
         toastMessage.textContent = message;
         
-        // Configurar icono según el tipo
         toastIcon.className = type === 'success' ? 'bi bi-check-circle-fill text-success me-2' :
                               type === 'warning' ? 'bi bi-exclamation-triangle-fill text-warning me-2' :
                               'bi bi-x-circle-fill text-danger me-2';
         
-        // Mostrar toast
         const toast = new bootstrap.Toast(toastEl);
         toast.show();
     }
 }
 
-// Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
     new MusicFlowInicio();
 });

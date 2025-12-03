@@ -322,8 +322,6 @@
 .toast-body {
     color: #333;
 }
-
-/* Empty state para playlists */
 .empty-playlists {
     text-align: center;
     padding: 2rem;
@@ -359,8 +357,6 @@
     background: rgba(139, 92, 246, 0.8);
     transform: scale(1.05);
 }
-
-/* Responsive */
 @media (max-width: 992px) {
     .main-content {
         margin-left: 0;

@@ -1,4 +1,3 @@
-// Sistema de gestion de perfiles de usuario con LocalStorage
 class UserProfileManager {
     constructor() {
         this.currentUser = null;
@@ -295,10 +294,8 @@ class UserProfileManager {
     }
 }
 
-// Inicializar el gestor de perfiles cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
     window.profileManager = new UserProfileManager();
 });
 
-// Hacer la clase disponible globalmente para otros archivos
 window.UserProfileManager = UserProfileManager;

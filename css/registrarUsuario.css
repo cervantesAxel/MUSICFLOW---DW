@@ -116,8 +116,6 @@ body {
   background: rgba(139, 92, 246, 0.2);
   color: #ffffff;
 }
-
-/* Géneros musicales */
 .genres-selection {
   background: rgba(15, 23, 42, 0.4);
   border-radius: 10px;
@@ -194,8 +192,6 @@ body {
   position: relative;
   z-index: 1;
 }
-
-/* Alertas */
 .alert {
   border-radius: 10px;
   border: none;
@@ -213,8 +209,6 @@ body {
   color: #ef4444;
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
-
-/* Responsive */
 @media (max-width: 576px) {
   .auth-card {
     padding: 30px 20px;

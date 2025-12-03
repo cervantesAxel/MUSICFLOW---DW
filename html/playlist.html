@@ -53,7 +53,6 @@
 
         <section class="content-section">
             <div class="container-fluid">
-                <!-- Estadísticas -->
                 <div class="stats-row mb-4" id="statsRow">
                     <div class="stat-card">
                         <div class="stat-icon">
@@ -84,7 +83,6 @@
                     </div>
                 </div>
 
-                <!-- Contenedor de playlists -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h2 class="h4">Todas tus playlists</h2>
                     <div class="loading-spinner d-none" id="loadingSpinner">
@@ -97,7 +95,6 @@
                 <div class="row g-4" id="playlistsContainer">
                 </div>
 
-                <!-- Empty State -->
                 <div class="empty-state d-none" id="emptyState">
                     <div class="empty-state-content">
                         <i class="bi bi-music-note-list"></i>
@@ -109,7 +106,6 @@
                     </div>
                 </div>
 
-                <!-- No Results State -->
                 <div class="empty-state d-none" id="noResultsState">
                     <div class="empty-state-content">
                         <i class="bi bi-search"></i>
@@ -120,8 +116,7 @@
             </div>
         </section>
     </main>
-    
-    <!-- Modal Crear/Editar Playlist -->
+
     <div class="modal fade" id="playlistModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -186,7 +181,6 @@
         </div>
     </div>
 
-    <!-- Modal Ver Playlist -->
     <div class="modal fade" id="viewPlaylistModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
@@ -214,7 +208,6 @@
                     </div>
                     
                     <div class="tracks-list" id="modalTracksList">
-                        <!-- Tracks will be loaded here -->
                     </div>
                     
                     <div class="empty-tracks d-none" id="emptyTracksState">
@@ -227,7 +220,6 @@
         </div>
     </div>
 
-    <!-- Modal Confirmar Eliminación -->
     <div class="modal fade" id="deleteConfirmModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -251,8 +243,7 @@
             </div>
         </div>
     </div>
-    
-    <!-- Toast de confirmación -->
+
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
         <div id="successToast" class="toast" role="alert">
             <div class="toast-header">

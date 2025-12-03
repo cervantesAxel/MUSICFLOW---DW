@@ -11,8 +11,6 @@
   margin-bottom: 1.5rem;
   font-size: 2rem;
 }
-
-/* card perfil */
 .profile-card {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 15px;
@@ -79,8 +77,6 @@
   font-size: 0.8rem;
   text-transform: uppercase;
 }
-
-/* card informacion */
 .info-card {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 15px;
@@ -102,8 +98,6 @@
   margin-bottom: 25px;
   font-size: 1.3rem;
 }
-
-/* formularios */
 .form-label {
   color: #333;
   font-weight: 500;
@@ -133,8 +127,6 @@
 .form-control:hover {
   border-color: rgba(102, 126, 234, 0.5);
 }
-
-/* Botones */
 .btn-primary {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -166,8 +158,6 @@
   color: white;
   transform: translateY(-2px);
 }
-
-/* Grid de información */
 .info-grid {
   display: grid;
   gap: 20px;
@@ -205,8 +195,6 @@
 .bio-text {
   line-height: 1.6;
 }
-
-/* Géneros musicales */
 .genres-grid {
   display: flex;
   flex-wrap: wrap;
@@ -227,8 +215,6 @@
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
-
-/* Modal */
 .modal-content {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
@@ -252,8 +238,6 @@
 .modal-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-/* Responsive */
 @media (max-width: 992px) {
   .main-content {
     margin-left: 0;

@@ -79,8 +79,6 @@
     font-weight: 600;
     margin-bottom: 1.5rem;
 }
-
-/* Estadísticas */
 .stats-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -128,8 +126,6 @@
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.9rem;
 }
-
-/* Playlist Cards */
 .playlist-card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
@@ -176,7 +172,6 @@
 }
 
 .playlist-cover-container .playlist-cover[alt]:not([alt=""]) {
-    /* Ensure alt text doesn't interfere with layout */
     text-indent: -9999px;
 }
 
@@ -284,8 +279,6 @@
     border-color: #667eea;
     color: white;
 }
-
-/* Empty States */
 .empty-state {
     text-align: center;
     padding: 4rem 2rem;
@@ -314,8 +307,6 @@
     margin-bottom: 2rem;
     opacity: 0.8;
 }
-
-/* Modal Styles */
 .modal-content {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border: none;
@@ -371,8 +362,6 @@
     background: rgba(255, 255, 255, 0.2);
     color: white;
 }
-
-/* Color Picker */
 .color-picker {
     display: flex;
     gap: 0.5rem;
@@ -396,8 +385,6 @@
     border-color: white;
     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
 }
-
-/* Playlist Cover in Modal */
 .modal-playlist-cover {
     width: 80px;
     height: 80px;
@@ -413,8 +400,6 @@
     background-position: center;
     background-repeat: no-repeat;
 }
-
-/* Tracks List */
 .tracks-list {
     max-height: 400px;
     overflow-y: auto;
@@ -491,15 +476,11 @@
     margin-bottom: 1rem;
     display: block;
 }
-
-/* Loading Spinner */
 .loading-spinner {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-/* Toast */
 .toast {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -513,8 +494,6 @@
 .toast-body {
     color: #333;
 }
-
-/* Sidebar toggle button */
 .sidebar-toggle {
     position: fixed;
     top: 1rem;
@@ -537,8 +516,6 @@
     background: rgba(139, 92, 246, 0.8);
     transform: scale(1.05);
 }
-
-/* Responsive */
 @media (max-width: 992px) {
     .main-content {
         margin-left: 0;

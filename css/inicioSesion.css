@@ -186,8 +186,6 @@ body {
   position: relative;
   z-index: 1;
 }
-
-/* Alertas */
 .alert {
   border-radius: 10px;
   border: none;
